@@ -1,0 +1,57 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "priceInCents": {
+      "type": "float",
+      "required": true
+    },
+    "filePath": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images", "files", "videos", "audios"]
+    },
+    "imagePath": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": ["images", "files", "videos", "audios"]
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "isAvailableForPurchase": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "orders": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::order.order",
+      "inversedBy": "products"
+    },
+    "download_verifications": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::download-verification.download-verification",
+      "mappedBy": "product"
+    }
+  }
+}

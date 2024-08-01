@@ -1,0 +1,44 @@
+@import '../../scss/fonts';
+@import '../../scss/colors';
+@import '../../scss/buttons';
+
+.doctor-card {
+  color: $clr-primary;
+  background: $bg-secondary;
+  border-radius: 0.5em;
+  font-family: $ff-primary;
+  font-weight: $fw-bold;
+  position: relative;
+
+  @media (max-width: 576px) {
+    max-height: min-content;
+  }
+}
+
+.doctor-card__head {
+  border-radius: 0.5em;
+  overflow: hidden;
+
+  & > img {
+    height: 100%;
+  }
+
+  @media (min-width: 576px) {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    flex-basis: 100%;
+
+    & > img {
+      min-height: 15em;
+      height: auto;
+    }
+  }
+}
+
+.text-container {
+  font-size: 0.75rem;
+
+  @media (min-width: 576px) {
+    font: inherit;
+  }
+}

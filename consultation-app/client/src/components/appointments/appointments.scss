@@ -1,0 +1,79 @@
+@import '../../scss/fonts';
+@import '../../scss/colors';
+@import '../../scss/buttons';
+
+.yellow {
+  color: yellow;
+}
+
+.modal {
+  background: $bg-backdrop;
+  color: $clr-primary;
+  font-family: $ff-primary;
+  font-weight: $fw-bold;
+}
+
+.rating-modal-content {
+  background: $bg-secondary;
+}
+
+.rating-modal-body {
+  .star-icon:hover {
+    cursor: pointer;
+    scale: 1.2;
+  }
+}
+
+.comments-input,
+.comments-input:focus,
+.comments-input::placeholder {
+  color: $clr-secondary;
+  background: $bg-primary;
+  border: none;
+}
+
+.appointments {
+  color: $clr-primary;
+  font-family: $ff-primary;
+  font-weight: $fw-bold;
+
+  & > li {
+    list-style-type: none;
+  }
+
+  @media (min-width: 576px) {
+    font-size: $fs-20;
+  }
+}
+
+.appointment-time {
+  & > .clock-icon {
+    color: $clr-primary;
+    line-height: 0;
+  }
+}
+
+.appointment__head {
+  & > .btn--secondary {
+    border-radius: 0.5em;
+    border: none;
+  }
+}
+
+.appointment__body {
+  position: relative;
+
+  & > button {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  & > button:disabled {
+    cursor: not-allowed;
+  }
+
+  & > .btn--secondary {
+    border: none;
+  }
+}

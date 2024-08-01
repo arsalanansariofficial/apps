@@ -1,0 +1,17 @@
+{
+  "parser": "babel-eslint",
+  "extends": "eslint:recommended",
+  "globals": { "strapi": true },
+  "env": { "es6": true, "node": true, "browser": false, "commonjs": true },
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": { "jsx": false, "experimentalObjectRestSpread": true }
+  },
+  "rules": {
+    "no-console": 0,
+    "semi": ["error", "always"],
+    "quotes": ["error", "single"],
+    "linebreak-style": ["error", "unix"],
+    "indent": ["error", 2, { "SwitchCase": 1 }]
+  }
+}

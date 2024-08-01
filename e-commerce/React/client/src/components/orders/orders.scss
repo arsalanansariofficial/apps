@@ -1,0 +1,98 @@
+@import '../../scss/fonts';
+@import '../../scss/colors';
+@import '../../scss/buttons';
+
+.doctors {
+  color: $clr-primary;
+  font-family: $ff-primary;
+  font-weight: $fw-bold;
+
+  & > li {
+    list-style: none;
+  }
+
+  @media (min-width: 576px) {
+    & > .doctors__title {
+      font-size: $fs-20;
+    }
+  }
+}
+
+.doctors__filter {
+  & > .btn--secondary::placeholder {
+    color: $clr-secondary;
+  }
+
+  & > .btn--secondary,
+  & > .btn--secondary:focus {
+    color: $clr-secondary;
+    background: $bg-secondary;
+    border: none;
+    border-radius: 0.5em;
+  }
+}
+
+.doctors-list {
+  @media (min-width: 576px) {
+    grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+  }
+}
+
+.modal {
+  background: $bg-backdrop;
+  color: $clr-primary;
+  font-family: $ff-primary;
+  font-weight: $fw-bold;
+}
+
+.details-modal-content {
+  background: $clr-primary;
+  border-radius: 1em;
+  border: none;
+  overflow: hidden;
+}
+
+.profile-cover {
+  background: $bg-tertiary;
+  height: 5em;
+  position: relative;
+
+  & > img {
+    border: 0.5em solid $clr-primary;
+    border-radius: 100%;
+    width: 8em;
+    aspect-ratio: 1;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translate(0, 50%);
+  }
+}
+
+.details-container {
+  margin-top: 4em;
+
+  & > .title {
+    line-height: 1;
+    letter-spacing: 5px;
+  }
+
+  & > .title,
+  & > .rating {
+    color: $bg-primary;
+  }
+
+  & > .email {
+    color: $clr-secondary;
+    word-break: break-all;
+  }
+
+  & > .tags {
+    color: $clr-tertiary;
+
+    & > span {
+      line-height: 1;
+    }
+  }
+}

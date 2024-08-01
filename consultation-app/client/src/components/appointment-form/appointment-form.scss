@@ -1,0 +1,81 @@
+@import '../../scss/fonts';
+@import '../../scss/colors';
+@import '../../scss/buttons';
+
+.form-container {
+  color: $clr-primary;
+  font-family: $ff-primary;
+  font-weight: $fw-bold;
+
+  @media (min-width: 576px) {
+    font-size: $fs-20;
+  }
+}
+
+.appointment-form {
+  background: $bg-secondary;
+  border-radius: 0.5em;
+
+  & > div > input:disabled {
+    color: $clr-disabled;
+    background: $bg-primary;
+  }
+
+  & > div > input,
+  & > div > input:focus,
+  & > div > input::placeholder,
+  & > div > textarea,
+  & > div > textarea:focus,
+  & > div > textarea::placeholder {
+    color: $clr-secondary;
+  }
+
+  & > div > .date-container,
+  & > div > .time-container {
+    position: relative;
+  }
+
+  & > div > input[type='date'] {
+    color-scheme: dark;
+  }
+
+  & > div > select {
+    background: $bg-primary;
+    border: none;
+    border-radius: 0.5em;
+    font: inherit;
+    padding-inline: 0.8em;
+    outline: none;
+    appearance: none;
+  }
+
+  & > div > select:focus {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  }
+
+  & > div > input,
+  & > div > input:focus,
+  & > div > textarea,
+  & > div > textarea:focus {
+    background: $bg-primary;
+    border: none;
+    font: inherit;
+  }
+
+  & > div > .form-control:valid {
+    background-image: none;
+  }
+
+  & > .btn--primary:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.banner {
+  color: $clr-secondary;
+  font-weight: $fw-regular;
+
+  & > a {
+    color: $btn-primary;
+  }
+}

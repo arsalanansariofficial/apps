@@ -1,0 +1,14 @@
+@import '../../scss/fonts';
+@import '../../scss/colors';
+@import '../../scss/buttons';
+
+.ml-modal {
+  color: $clr-primary;
+  background: $bg-backdrop;
+  font-family: $ff-primary;
+  font-weight: $fw-bold;
+}
+
+.ml-modal-content {
+  background: none;
+}

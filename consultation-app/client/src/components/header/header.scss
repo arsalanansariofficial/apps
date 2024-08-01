@@ -1,0 +1,35 @@
+@import '../../scss/fonts';
+@import '../../scss/colors';
+
+nav {
+  color: $clr-primary;
+  font-family: $ff-primary;
+  font-weight: $fw-bold;
+  font-size: $fs-16;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  @media (min-width: 576px) {
+    font-size: $fs-20;
+  }
+}
+
+.navigation-button {
+  font-weight: $fw-regular;
+}
+
+.profile-button {
+  font-size: $fs-20;
+}
+
+.dropdown-menu {
+  min-width: auto;
+}
+
+.login-link {
+  font-family: $ff-secondary;
+  font-weight: $fw-regular;
+}

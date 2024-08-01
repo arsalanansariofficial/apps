@@ -1,0 +1,25 @@
+{
+  "type": "module",
+  "license": "ISC",
+  "version": "1.0.0",
+  "main": "src/app.js",
+  "name": "pocket-api",
+  "author": "Arsalan Ansari",
+  "description": "Provides pocket API services",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "env-cmd -f .env.local nodemon src/app.js"
+  },
+  "dependencies": {
+    "mongodb": "^5.0.0",
+    "bcryptjs": "^2.4.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.3.16",
+    "validator": "^13.9.0",
+    "jsonwebtoken": "^8.4.0"
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0",
+    "nodemon": "^2.0.20"
+  }
+}

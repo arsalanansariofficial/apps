@@ -1,0 +1,86 @@
+#quote-root {
+  /* neutral */
+  --Dark-Blue: hsl(218, 23%, 16%);
+  --Grayish-Blue: hsl(217, 19%, 38%);
+  --Dark-Grayish-Blue: hsl(217, 19%, 24%);
+
+  /* primary */
+  --Light-Cyan: hsl(193, 38%, 86%);
+  --Neon-Green: hsl(150, 100%, 66%);
+
+  /* fw */
+  --fw-800: 800;
+
+  font-family: 'Manrope', sans-serif;
+  // background: var(--Dark-Blue);
+  padding: 1em;
+  min-height: 100vh;
+  align-content: center;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card {
+  background: var(--Dark-Grayish-Blue);
+  border-radius: 0.5em;
+  text-align: center;
+  margin-inline: auto;
+  padding: 1.5em 1em 3em;
+  max-width: 25em;
+  position: relative;
+}
+
+.quote-id {
+  color: var(--Neon-Green);
+  font-size: 0.7rem;
+  font-weight: var(--fw-800);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.quote {
+  color: var(--Light-Cyan);
+  font-size: 1.25rem;
+  font-weight: var(--fw-800);
+  margin-top: 0.5em;
+}
+
+.divider {
+  margin-top: 1.5em;
+  margin-inline: auto;
+
+  @media (min-width: 40em) {
+    display: none;
+  }
+}
+
+.desk {
+  display: none;
+
+  @media (min-width: 40em) {
+    display: block;
+  }
+}
+
+.card-img {
+  background: var(--Neon-Green);
+  border-radius: 100%;
+  padding: 0.5em;
+  max-width: 3em;
+  align-content: center;
+  aspect-ratio: 1/1;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 50%;
+  translate: -50% 50%;
+  cursor: pointer;
+
+  & > .dice-icon {
+    margin-inline: auto;
+  }
+}

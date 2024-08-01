@@ -1,0 +1,38 @@
+@import '../../scss/fonts';
+@import '../../scss/colors';
+@import '../../scss/buttons';
+
+ul {
+  list-style-type: none;
+}
+
+.pp-post {
+  color: $clr-primary;
+  background: $bg-secondary;
+  border-radius: 0.5em;
+  font-family: $ff-primary;
+  font-weight: $fw-bold;
+
+  .btn--primary {
+    border-radius: 0.5em;
+    cursor: pointer;
+  }
+
+  .btn--secondary::placeholder {
+    color: $clr-secondary;
+  }
+
+  .btn--secondary,
+  .btn--secondary:focus {
+    color: $clr-secondary;
+    background: $bg-primary;
+    border: none;
+    border-radius: 0.5em;
+  }
+}
+
+.pp-post__head {
+  overflow: hidden;
+  border-radius: 0.5em 0.5em 0 0;
+  flex-basis: 100%;
+}

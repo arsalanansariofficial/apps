@@ -1,0 +1,445 @@
+{
+  "info": {
+    "_postman_id": "665a22f3-211b-4c28-bcf5-4b584a8ffb6a",
+    "name": "Pocket API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "Get User",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [""],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/users/{{userID}}",
+              "host": ["{{url}}"],
+              "path": ["users", "{{userID}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get User Appointments",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [""],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/users/{{userID}}/appointments",
+              "host": ["{{url}}"],
+              "path": ["users", "{{userID}}", "appointments"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Appointment",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/appointments/{{appointmentID}}",
+              "host": ["{{url}}"],
+              "path": ["appointments", "{{appointmentID}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Register",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [""],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"emailId\": \"new-user@example.com\",\r\n    \"firstName\": \"New\",\r\n    \"lastName\": \"User\",\r\n    \"mobile\": \"9876543210\",\r\n    \"password\": \"9876543210\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/users/register",
+              "host": ["{{url}}"],
+              "path": ["users", "register"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {\r",
+                  "    pm.environment.set('authenticationToken', pm.response.json().accessToken);\r",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "new-user@example.com",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "9876543210",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/auth/login",
+              "host": ["{{url}}"],
+              "path": ["auth", "login"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Logout",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [""],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/auth/logout",
+              "host": ["{{url}}"],
+              "path": ["auth", "logout"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Appointment",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {\r",
+                  "    pm.environment.set('appointmentID', pm.response.text());\r",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"doctorId\": \"{{doctorID}}\",\r\n    \"doctorName\": \"{{doctorName}}\",\r\n    \"userId\": \"{{userID}}\",\r\n    \"userName\": \"{{userName}}\",\r\n    \"userEmailId\": \"{{userEmailId}}\",\r\n    \"timeSlot\": \"{{timeSlot}}\",\r\n    \"appointmentDate\": \"{{appointmentDate}}\",\r\n    \"symptoms\": \"Some symptoms here..\",\r\n    \"priorMedicalHistory\": \"Some medical history...\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/appointments",
+              "host": ["{{url}}"],
+              "path": ["appointments"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Post Rating",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"appointmentId\": \"{{appointmentID}}\",\r\n  \"doctorId\": \"{{doctorID}}\",\r\n  \"rating\": 5,\r\n  \"comments\": \"Some comments here...\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/ratings",
+              "host": ["{{url}}"],
+              "path": ["ratings"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Doctor",
+      "item": [
+        {
+          "name": "Required",
+          "item": [
+            {
+              "name": "Get Doctor",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/doctors/{{doctorID}}",
+                  "host": ["{{url}}"],
+                  "path": ["doctors", "{{doctorID}}"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get All Doctors",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/doctors",
+                  "host": ["{{url}}"],
+                  "path": ["doctors"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Doctor Time Slot",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/doctors/{{doctorID}}/timeSlots?date=2024-06-05",
+                  "host": ["{{url}}"],
+                  "path": ["doctors", "{{doctorID}}", "timeSlots"],
+                  "query": [
+                    {
+                      "key": "date",
+                      "value": "2024-06-05"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Doctors Speciality",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/doctors/speciality",
+                  "host": ["{{url}}"],
+                  "path": ["doctors", "speciality"]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Optional",
+          "item": [
+            {
+              "name": "Create Doctor",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"firstName\": \"New\",\r\n  \"lastName\": \"Doctor\",\r\n  \"speciality\": \"DENTIST\",\r\n  \"dob\": \"1990-01-01\",\r\n  \"address\": {\r\n    \"addressLine1\": \"Bandara\",\r\n    \"addressLine2\": \"Mumbai\",\r\n    \"city\": \"Mumbai\",\r\n    \"state\": \"Maharashtra\",\r\n    \"postcode\": \"100100\"\r\n  },\r\n  \"mobile\": \"9876543210\",\r\n  \"emailId\": \"new-doctor@example.com\",\r\n  \"pan\": \"ABCDE1234A\",\r\n  \"highestQualification\": \"MBBS\",\r\n  \"college\": \"Medical College\",\r\n  \"totalYearsOfExp\": 5,\r\n  \"rating\": 3\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/doctors",
+                  "host": ["{{url}}"],
+                  "path": ["doctors"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create Doctor Bulk",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\r\n    {\r\n        \"id\": \"UUID-2\",\r\n        \"firstName\": \"Blossom\",\r\n        \"lastName\": \"Valentine\",\r\n        \"speciality\": \"PULMONOLOGIST\",\r\n        \"dob\": \"2021-09-16\",\r\n        \"address\": {\r\n            \"id\": \"UUID-2\",\r\n            \"addressLine1\": \"103-4867 Nullam Ave\",\r\n            \"addressLine2\": \"-45.85534, 146.33318\",\r\n            \"city\": \"Patalillo\",\r\n            \"state\": \"San José\",\r\n            \"postcode\": \"L2S 2T0\"\r\n        },\r\n        \"mobile\": \"16030728 0891\",\r\n        \"emailId\": \"malesuada@lacusMaurisnon.com\",\r\n        \"pan\": \"KAR90SJR5KQ\",\r\n        \"highestQualification\": \"MDS\",\r\n        \"college\": \"Enim Consequat Purus LLC\",\r\n        \"totalYearsOfExp\": 20,\r\n        \"rating\": 5.0\r\n    },\r\n    {\r\n        \"id\": \"UUID-48\",\r\n        \"firstName\": \"Holmes\",\r\n        \"lastName\": \"Hansen\",\r\n        \"speciality\": \"CARDIOLOGIST\",\r\n        \"dob\": \"2022-05-13\",\r\n        \"address\": {\r\n            \"id\": \"UUID-48\",\r\n            \"addressLine1\": \"7662 Dolor St.\",\r\n            \"addressLine2\": \"34.31709, -16.75835\",\r\n            \"city\": \"Belo Horizonte\",\r\n            \"state\": \"MG\",\r\n            \"postcode\": \"367962\"\r\n        },\r\n        \"mobile\": \"16170916 4626\",\r\n        \"emailId\": \"lorem.vitae.odio@Suspendissealiquet.net\",\r\n        \"pan\": \"JXG01DCS3RE\",\r\n        \"highestQualification\": \"MBBS\",\r\n        \"college\": \"Sit Amet Consectetuer Corp.\",\r\n        \"totalYearsOfExp\": 41,\r\n        \"rating\": 5.0\r\n    },\r\n    {\r\n        \"id\": \"UUID-42\",\r\n        \"firstName\": \"Alexis\",\r\n        \"lastName\": \"Rodriguez\",\r\n        \"speciality\": \"CARDIOLOGIST\",\r\n        \"dob\": \"2020-11-07\",\r\n        \"address\": {\r\n            \"id\": \"UUID-42\",\r\n            \"addressLine1\": \"P.O. Box 120, 1291 Non St.\",\r\n            \"addressLine2\": \"46.75055, 83.74275\",\r\n            \"city\": \"Avignon\",\r\n            \"state\": \"PR\",\r\n            \"postcode\": \"49083\"\r\n        },\r\n        \"mobile\": \"16021123 4984\",\r\n        \"emailId\": \"nec@vestibulumnec.co.uk\",\r\n        \"pan\": \"ZPA53CWC0FT\",\r\n        \"highestQualification\": \"BDS\",\r\n        \"college\": \"Maecenas Malesuada Limited\",\r\n        \"totalYearsOfExp\": 21,\r\n        \"rating\": 5.0\r\n    },\r\n    {\r\n        \"id\": \"UUID-11\",\r\n        \"firstName\": \"Ocean\",\r\n        \"lastName\": \"Garner\",\r\n        \"speciality\": \"PULMONOLOGIST\",\r\n        \"dob\": \"2021-11-17\",\r\n        \"address\": {\r\n            \"id\": \"UUID-11\",\r\n            \"addressLine1\": \"P.O. Box 771, 4467 Id Avenue\",\r\n            \"addressLine2\": \"-79.27567, 36.24963\",\r\n            \"city\": \"Bello\",\r\n            \"state\": \"Antioquia\",\r\n            \"postcode\": \"33457\"\r\n        },\r\n        \"mobile\": \"16060416 1182\",\r\n        \"emailId\": \"id.erat@conubianostra.edu\",\r\n        \"pan\": \"XRA69VTH2CE\",\r\n        \"highestQualification\": \"BDS\",\r\n        \"college\": \"Interdum Ligula PC\",\r\n        \"totalYearsOfExp\": 36,\r\n        \"rating\": 5.0\r\n    },\r\n    {\r\n        \"id\": \"UUID-49\",\r\n        \"firstName\": \"Tanner\",\r\n        \"lastName\": \"Carpenter\",\r\n        \"speciality\": \"GASTRO\",\r\n        \"dob\": \"2020-07-28\",\r\n        \"address\": {\r\n            \"id\": \"UUID-49\",\r\n            \"addressLine1\": \"271-823 A, Road\",\r\n            \"addressLine2\": \"81.87556, -162.06552\",\r\n            \"city\": \"Nicoya\",\r\n            \"state\": \"G\",\r\n            \"postcode\": \"820346\"\r\n        },\r\n        \"mobile\": \"16930206 4168\",\r\n        \"emailId\": \"vel.nisl@arcuSed.ca\",\r\n        \"pan\": \"GRV24SWP2LN\",\r\n        \"highestQualification\": \"BDS\",\r\n        \"college\": \"Ultrices Sit Institute\",\r\n        \"totalYearsOfExp\": 38,\r\n        \"rating\": 5.0\r\n    },\r\n    {\r\n        \"id\": \"UUID-65\",\r\n        \"firstName\": \"Genevieve\",\r\n        \"lastName\": \"Gonzales\",\r\n        \"speciality\": \"GASTRO\",\r\n        \"dob\": \"2022-05-01\",\r\n        \"address\": {\r\n            \"id\": \"UUID-65\",\r\n            \"addressLine1\": \"280 Est, Avenue\",\r\n            \"addressLine2\": \"-69.16321, -119.20171\",\r\n            \"city\": \"Ongole\",\r\n            \"state\": \"Andhra Pradesh\",\r\n            \"postcode\": \"S4 8BK\"\r\n        },\r\n        \"mobile\": \"16650626 1582\",\r\n        \"emailId\": \"Pellentesque.habitant@et.com\",\r\n        \"pan\": \"SIP07KSM0XE\",\r\n        \"highestQualification\": \"BDS\",\r\n        \"college\": \"Non Feugiat Ltd\",\r\n        \"totalYearsOfExp\": 22,\r\n        \"rating\": 5.0\r\n    },\r\n    {\r\n        \"id\": \"UUID-52\",\r\n        \"firstName\": \"Jolie\",\r\n        \"lastName\": \"Holloway\",\r\n        \"speciality\": \"CARDIOLOGIST\",\r\n        \"dob\": \"2020-12-23\",\r\n        \"address\": {\r\n            \"id\": \"UUID-52\",\r\n            \"addressLine1\": \"Ap #685-6922 Rutrum Avenue\",\r\n            \"addressLine2\": \"11.94224, -0.45829\",\r\n            \"city\": \"Westport\",\r\n            \"state\": \"SI\",\r\n            \"postcode\": \"2196\"\r\n        },\r\n        \"mobile\": \"16880729 8099\",\r\n        \"emailId\": \"urna.Vivamus@nullaat.co.uk\",\r\n        \"pan\": \"UAT08PVG6JC\",\r\n        \"highestQualification\": \"MBBS\",\r\n        \"college\": \"Donec Limited\",\r\n        \"totalYearsOfExp\": 50,\r\n        \"rating\": 5.0\r\n    },\r\n    {\r\n        \"id\": \"UUID-45\",\r\n        \"firstName\": \"Cadman\",\r\n        \"lastName\": \"Garcia\",\r\n        \"speciality\": \"DENTIST\",\r\n        \"dob\": \"2021-06-02\",\r\n        \"address\": {\r\n            \"id\": \"UUID-45\",\r\n            \"addressLine1\": \"2341 Metus Rd.\",\r\n            \"addressLine2\": \"-21.16956, -168.01797\",\r\n            \"city\": \"Gullegem\",\r\n            \"state\": \"WV\",\r\n            \"postcode\": \"41303\"\r\n        },\r\n        \"mobile\": \"16790923 8268\",\r\n        \"emailId\": \"volutpat.ornare.facilisis@elit.net\",\r\n        \"pan\": \"HNC73ARA1LF\",\r\n        \"highestQualification\": \"MDS\",\r\n        \"college\": \"Arcu Limited\",\r\n        \"totalYearsOfExp\": 48,\r\n        \"rating\": 5.0\r\n    },\r\n    {\r\n        \"id\": \"UUID-94\",\r\n        \"firstName\": \"Ira\",\r\n        \"lastName\": \"Tyson\",\r\n        \"speciality\": \"GENERAL_PHYSICIAN\",\r\n        \"dob\": \"2021-01-15\",\r\n        \"address\": {\r\n            \"id\": \"UUID-94\",\r\n            \"addressLine1\": \"Ap #431-8311 Pede Street\",\r\n            \"addressLine2\": \"-42.32868, -69.39806\",\r\n            \"city\": \"Pabianice\",\r\n            \"state\": \"LD\",\r\n            \"postcode\": \"95937\"\r\n        },\r\n        \"mobile\": \"16830515 0222\",\r\n        \"emailId\": \"Phasellus.at@euplacerat.edu\",\r\n        \"pan\": \"OXZ94PZX9LY\",\r\n        \"highestQualification\": \"BDS\",\r\n        \"college\": \"Eu Company\",\r\n        \"totalYearsOfExp\": 49,\r\n        \"rating\": 5.0\r\n    },\r\n    {\r\n        \"id\": \"UUID-91\",\r\n        \"firstName\": \"Zeph\",\r\n        \"lastName\": \"Kelley\",\r\n        \"speciality\": \"CARDIOLOGIST\",\r\n        \"dob\": \"2020-12-28\",\r\n        \"address\": {\r\n            \"id\": \"UUID-91\",\r\n            \"addressLine1\": \"Ap #156-4629 Sit St.\",\r\n            \"addressLine2\": \"80.76402, 51.24831\",\r\n            \"city\": \"Vienna\",\r\n            \"state\": \"Vienna\",\r\n            \"postcode\": \"78238\"\r\n        },\r\n        \"mobile\": \"16501201 1044\",\r\n        \"emailId\": \"cursus.non@faucibus.org\",\r\n        \"pan\": \"XGR58GZL2II\",\r\n        \"highestQualification\": \"MDS\",\r\n        \"college\": \"Pede Malesuada Vel Associates\",\r\n        \"totalYearsOfExp\": 22,\r\n        \"rating\": 5.0\r\n    },\r\n    {\r\n        \"id\": \"UUID-90\",\r\n        \"firstName\": \"Brandon\",\r\n        \"lastName\": \"Stanley\",\r\n        \"speciality\": \"GENERAL_PHYSICIAN\",\r\n        \"dob\": \"2021-01-15\",\r\n        \"address\": {\r\n            \"id\": \"UUID-90\",\r\n            \"addressLine1\": \"P.O. Box 790, 2511 Per Av.\",\r\n            \"addressLine2\": \"-87.21455, 118.61338\",\r\n            \"city\": \"Hafizabad\",\r\n            \"state\": \"Punjab\",\r\n            \"postcode\": \"572473\"\r\n        },\r\n        \"mobile\": \"16201219 4383\",\r\n        \"emailId\": \"convallis@et.com\",\r\n        \"pan\": \"OWS40ZOL7YR\",\r\n        \"highestQualification\": \"MDS\",\r\n        \"college\": \"Aliquam Adipiscing Incorporated\",\r\n        \"totalYearsOfExp\": 28,\r\n        \"rating\": 5.0\r\n    },\r\n    {\r\n        \"id\": \"UUID-19\",\r\n        \"firstName\": \"Kennan\",\r\n        \"lastName\": \"Hess\",\r\n        \"speciality\": \"GENERAL_PHYSICIAN\",\r\n        \"dob\": \"2022-04-06\",\r\n        \"address\": {\r\n            \"id\": \"UUID-19\",\r\n            \"addressLine1\": \"P.O. Box 210, 8076 Mi. St.\",\r\n            \"addressLine2\": \"-23.39101, -148.43591\",\r\n            \"city\": \"Milmort\",\r\n            \"state\": \"Luik\",\r\n            \"postcode\": \"6624\"\r\n        },\r\n        \"mobile\": \"16131024 0187\",\r\n        \"emailId\": \"arcu.Curabitur@loremDonecelementum.org\",\r\n        \"pan\": \"DAT70NTH3GB\",\r\n        \"highestQualification\": \"MBBS\",\r\n        \"college\": \"Eget Corporation\",\r\n        \"totalYearsOfExp\": 23,\r\n        \"rating\": 5.0\r\n    },\r\n    {\r\n        \"id\": \"UUID-34\",\r\n        \"firstName\": \"Meghan\",\r\n        \"lastName\": \"Jordan\",\r\n        \"speciality\": \"CARDIOLOGIST\",\r\n        \"dob\": \"2022-04-03\",\r\n        \"address\": {\r\n            \"id\": \"UUID-34\",\r\n            \"addressLine1\": \"P.O. Box 985, 6300 Odio. Road\",\r\n            \"addressLine2\": \"57.40999, -121.87884\",\r\n            \"city\": \"Oud-Turnhout\",\r\n            \"state\": \"Antwerpen\",\r\n            \"postcode\": \"3514\"\r\n        },\r\n        \"mobile\": \"16891025 2785\",\r\n        \"emailId\": \"vel@sitametdapibus.net\",\r\n        \"pan\": \"JFT53IQX9CP\",\r\n        \"highestQualification\": \"MBBS\",\r\n        \"college\": \"Vivamus Non Lorem Foundation\",\r\n        \"totalYearsOfExp\": 39,\r\n        \"rating\": 5.0\r\n    },\r\n    {\r\n        \"id\": \"UUID-85\",\r\n        \"firstName\": \"Shana\",\r\n        \"lastName\": \"Baldwin\",\r\n        \"speciality\": \"GASTRO\",\r\n        \"dob\": \"2020-10-13\",\r\n        \"address\": {\r\n            \"id\": \"UUID-85\",\r\n            \"addressLine1\": \"182-3702 At, Rd.\",\r\n            \"addressLine2\": \"-35.22562, -171.10507\",\r\n            \"city\": \"Cartagena\",\r\n            \"state\": \"Bolívar\",\r\n            \"postcode\": \"434953\"\r\n        },\r\n        \"mobile\": \"16930906 1068\",\r\n        \"emailId\": \"vitae.diam@Vestibulumuteros.org\",\r\n        \"pan\": \"OHV20XBB6LN\",\r\n        \"highestQualification\": \"BDS\",\r\n        \"college\": \"Massa Non Ante Corporation\",\r\n        \"totalYearsOfExp\": 39,\r\n        \"rating\": 5.0\r\n    },\r\n    {\r\n        \"id\": \"UUID-36\",\r\n        \"firstName\": \"Hilary\",\r\n        \"lastName\": \"Porter\",\r\n        \"speciality\": \"ENT\",\r\n        \"dob\": \"2020-12-19\",\r\n        \"address\": {\r\n            \"id\": \"UUID-36\",\r\n            \"addressLine1\": \"486-4766 Lacinia Avenue\",\r\n            \"addressLine2\": \"-73.45229, 126.99075\",\r\n            \"city\": \"Itagüí\",\r\n            \"state\": \"Antioquia\",\r\n            \"postcode\": \"890675\"\r\n        },\r\n        \"mobile\": \"16740615 9280\",\r\n        \"emailId\": \"nec.tempus.mauris@nibh.com\",\r\n        \"pan\": \"YBD84UZN5UW\",\r\n        \"highestQualification\": \"MBBS\",\r\n        \"college\": \"Morbi Neque Tellus LLP\",\r\n        \"totalYearsOfExp\": 11,\r\n        \"rating\": 5.0\r\n    },\r\n    {\r\n        \"id\": \"UUID-62\",\r\n        \"firstName\": \"Zeph\",\r\n        \"lastName\": \"Gonzales\",\r\n        \"speciality\": \"DENTIST\",\r\n        \"dob\": \"2021-08-17\",\r\n        \"address\": {\r\n            \"id\": \"UUID-62\",\r\n            \"addressLine1\": \"2017 Ipsum Road\",\r\n            \"addressLine2\": \"67.77552, 44.09892\",\r\n            \"city\": \"Albury\",\r\n            \"state\": \"New South Wales\",\r\n            \"postcode\": \"53-132\"\r\n        },\r\n        \"mobile\": \"16270328 4105\",\r\n        \"emailId\": \"in@augueac.net\",\r\n        \"pan\": \"KPT11FMZ5WB\",\r\n        \"highestQualification\": \"MDS\",\r\n        \"college\": \"Quisque Corp.\",\r\n        \"totalYearsOfExp\": 27,\r\n        \"rating\": 5.0\r\n    },\r\n    {\r\n        \"id\": \"UUID-37\",\r\n        \"firstName\": \"Hermione\",\r\n        \"lastName\": \"Kelley\",\r\n        \"speciality\": \"DENTIST\",\r\n        \"dob\": \"2021-05-16\",\r\n        \"address\": {\r\n            \"id\": \"UUID-37\",\r\n            \"addressLine1\": \"Ap #256-8501 Id, Rd.\",\r\n            \"addressLine2\": \"49.0933, 122.50113\",\r\n            \"city\": \"Chicago\",\r\n            \"state\": \"Illinois\",\r\n            \"postcode\": \"23384\"\r\n        },\r\n        \"mobile\": \"16901013 8262\",\r\n        \"emailId\": \"eu@velsapienimperdiet.net\",\r\n        \"pan\": \"FBK36EEI6FD\",\r\n        \"highestQualification\": \"MBBS\",\r\n        \"college\": \"Non Limited\",\r\n        \"totalYearsOfExp\": 29,\r\n        \"rating\": 5.0\r\n    },\r\n    {\r\n        \"id\": \"UUID-24\",\r\n        \"firstName\": \"Dorian\",\r\n        \"lastName\": \"Sawyer\",\r\n        \"speciality\": \"GASTRO\",\r\n        \"dob\": \"2022-01-26\",\r\n        \"address\": {\r\n            \"id\": \"UUID-24\",\r\n            \"addressLine1\": \"4137 Arcu. Street\",\r\n            \"addressLine2\": \"13.16383, -146.36\",\r\n            \"city\": \"Shreveport\",\r\n            \"state\": \"LA\",\r\n            \"postcode\": \"92-504\"\r\n        },\r\n        \"mobile\": \"16290706 5060\",\r\n        \"emailId\": \"primis@erosNam.edu\",\r\n        \"pan\": \"PZG02HQK5MG\",\r\n        \"highestQualification\": \"MBBS\",\r\n        \"college\": \"Odio Phasellus At Consulting\",\r\n        \"totalYearsOfExp\": 2,\r\n        \"rating\": 5.0\r\n    },\r\n    {\r\n        \"id\": \"UUID-7\",\r\n        \"firstName\": \"Zahir\",\r\n        \"lastName\": \"Levine\",\r\n        \"speciality\": \"GASTRO\",\r\n        \"dob\": \"2021-04-16\",\r\n        \"address\": {\r\n            \"id\": \"UUID-7\",\r\n            \"addressLine1\": \"P.O. Box 241, 9380 Felis Av.\",\r\n            \"addressLine2\": \"58.64052, -127.43642\",\r\n            \"city\": \"Panketal\",\r\n            \"state\": \"Brandenburg\",\r\n            \"postcode\": \"13961-260\"\r\n        },\r\n        \"mobile\": \"16190627 3881\",\r\n        \"emailId\": \"Aliquam.vulputate@Naminterdumenim.co.uk\",\r\n        \"pan\": \"VRV00DCP6NU\",\r\n        \"highestQualification\": \"MBBS\",\r\n        \"college\": \"Sed Diam Lorem LLP\",\r\n        \"totalYearsOfExp\": 44,\r\n        \"rating\": 5.0\r\n    },\r\n    {\r\n        \"id\": \"UUID-83\",\r\n        \"firstName\": \"Ahmed\",\r\n        \"lastName\": \"Guy\",\r\n        \"speciality\": \"CARDIOLOGIST\",\r\n        \"dob\": \"2021-07-28\",\r\n        \"address\": {\r\n            \"id\": \"UUID-83\",\r\n            \"addressLine1\": \"Ap #784-7638 Quam Av.\",\r\n            \"addressLine2\": \"37.8144, 39.13138\",\r\n            \"city\": \"Çermik\",\r\n            \"state\": \"Diy\",\r\n            \"postcode\": \"DY2V 1OK\"\r\n        },\r\n        \"mobile\": \"16790626 5389\",\r\n        \"emailId\": \"erat@nequepellentesque.co.uk\",\r\n        \"pan\": \"JHE02GCY8FM\",\r\n        \"highestQualification\": \"BDS\",\r\n        \"college\": \"Mollis Lectus Pede Corporation\",\r\n        \"totalYearsOfExp\": 32,\r\n        \"rating\": 5.0\r\n    }\r\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/doctors-all",
+                  "host": ["{{url}}"],
+                  "path": ["doctors-all"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Doctor",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"firstName\": \"Another\",\r\n    \"lastName\": \"Doctor\",\r\n    \"speciality\": \"DENTIST\",\r\n    \"dob\": \"1990-01-01\",\r\n    \"address\": {\r\n        \"_id\": \"{{doctorID}}\",\r\n        \"addressLine1\": \"Bandara\",\r\n        \"addressLine2\": \"Mumbai\",\r\n        \"city\": \"Mumbai\",\r\n        \"state\": \"Maharashtra\",\r\n        \"postcode\": \"100100\"\r\n    },\r\n    \"mobile\": \"9876543210\",\r\n    \"emailId\": \"new-doctor@example.com\",\r\n    \"pan\": \"ABCDE1234A\",\r\n    \"highestQualification\": \"MBBS\",\r\n    \"college\": \"Medical College\",\r\n    \"totalYearsOfExp\": 5,\r\n    \"rating\": 3\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/doctors/{{doctorID}}",
+                  "host": ["{{url}}"],
+                  "path": ["doctors", "{{doctorID}}"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Doctor",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/doctors/{{doctorID}}",
+                  "host": ["{{url}}"],
+                  "path": ["doctors", "{{doctorID}}"]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{authenticationToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ]
+}

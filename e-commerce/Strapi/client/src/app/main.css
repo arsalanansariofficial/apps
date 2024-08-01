@@ -1,0 +1,11 @@
+@import 'font-awesome';
+
+@font-face {
+  font-family: 'Ubuntu Mono';
+  src: url('/fonts/ubuntu-mono/ub-regular.ttf') format('truetype');
+  font-weight: var(--fw-700);
+}
+
+body {
+  font-family: 'Ubuntu Mono', monospace;
+}

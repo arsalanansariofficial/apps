@@ -1,0 +1,82 @@
+[
+  {
+    "_id": {
+      "$oid": "669228470818905a6c78364b"
+    },
+    "productImage": "/images/default.jpg",
+    "price": 20,
+    "name": "Product 1",
+    "description": "Just another product",
+    "createdAt": {
+      "$date": "2024-07-13T07:09:59.083Z"
+    },
+    "updatedAt": {
+      "$date": "2024-07-13T07:09:59.083Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "669228500818905a6c78364d"
+    },
+    "productImage": "/images/PRODUCT-3.jpg",
+    "price": 25,
+    "name": "Product 2",
+    "description": "Just another product",
+    "createdAt": {
+      "$date": "2024-07-13T07:10:08.114Z"
+    },
+    "updatedAt": {
+      "$date": "2024-07-13T07:10:08.114Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "669228590818905a6c78364f"
+    },
+    "productImage": "/images/PRODUCT-5.jpg",
+    "price": 30,
+    "name": "Product 3",
+    "description": "Just another product",
+    "createdAt": {
+      "$date": "2024-07-13T07:10:17.777Z"
+    },
+    "updatedAt": {
+      "$date": "2024-07-13T07:10:17.777Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "669228630818905a6c783651"
+    },
+    "productImage": "/images/PRODUCT-7.jpg",
+    "price": 35,
+    "name": "Product 4",
+    "description": "Just another product",
+    "createdAt": {
+      "$date": "2024-07-13T07:10:27.470Z"
+    },
+    "updatedAt": {
+      "$date": "2024-07-13T07:10:27.470Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "669228700818905a6c783653"
+    },
+    "productImage": "/images/PRODUCT-9.jpg",
+    "price": 40,
+    "name": "Product 5",
+    "description": "Just another product",
+    "createdAt": {
+      "$date": "2024-07-13T07:10:40.273Z"
+    },
+    "updatedAt": {
+      "$date": "2024-07-13T07:10:40.273Z"
+    },
+    "__v": 0
+  }
+]

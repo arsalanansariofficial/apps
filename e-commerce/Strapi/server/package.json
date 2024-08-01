@@ -1,0 +1,36 @@
+{
+  "private": true,
+  "license": "MIT",
+  "version": "0.1.0",
+  "name": "server_project-007",
+  "author": {
+    "name": "Arsalan Ansari"
+  },
+  "description": "Provides API's for project-007",
+  "engines": {
+    "npm": ">=6.0.0",
+    "node": ">=18.0.0 <=20.x.x"
+  },
+  "strapi": {
+    "uuid": "fb620eac-7830-4a78-8770-364d18d158b7"
+  },
+  "scripts": {
+    "strapi": "strapi",
+    "build": "strapi build",
+    "deploy": "strapi deploy",
+    "develop": "strapi develop",
+    "start": "cross-env NODE_ENV=production strapi start"
+  },
+  "dependencies": {
+    "react": "^18.0.0",
+    "cross-env": "^7.0.3",
+    "react-dom": "^18.0.0",
+    "better-sqlite3": "8.6.0",
+    "@strapi/strapi": "4.25.0",
+    "react-router-dom": "5.3.4",
+    "styled-components": "5.3.3",
+    "@strapi/plugin-i18n": "4.25.0",
+    "@strapi/plugin-cloud": "4.25.0",
+    "@strapi/plugin-users-permissions": "4.25.0"
+  }
+}

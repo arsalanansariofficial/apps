@@ -1,0 +1,44 @@
+@import '../../scss/fonts';
+@import '../../scss/colors';
+@import '../../scss/buttons';
+
+.form-container {
+  color: $clr-primary;
+  font-family: $ff-primary;
+  font-weight: $fw-bold;
+
+  @media (min-width: 576px) {
+    font-size: $fs-20;
+  }
+}
+
+.login-form {
+  background: $bg-secondary;
+  border-radius: 0.5em;
+
+  & > div > input,
+  & > div > input:focus,
+  & > div > input::placeholder {
+    color: $clr-secondary;
+  }
+
+  & > div > input,
+  & > div > input:focus {
+    background: $bg-primary;
+    border: none;
+    font: inherit;
+  }
+
+  @media (min-width: 576px) {
+    font-size: $fs-20;
+  }
+}
+
+.banner {
+  color: $clr-secondary;
+  font-weight: $fw-regular;
+
+  & > a {
+    color: $btn-primary;
+  }
+}

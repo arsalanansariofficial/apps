@@ -1,0 +1,28 @@
+@import 'bootstrap/scss/bootstrap';
+@import 'font-awesome';
+@import './scss/colors';
+
+@font-face {
+  font-family: 'Ubuntu Mono';
+  src: url('/fonts/ubuntu-mono/UbuntuMono-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Ubuntu Mono';
+  src: url('/fonts/ubuntu-mono/UbuntuMono-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Leckerli One';
+  src: url('/fonts/leckerli-one/LeckerliOne-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  background: $bg-primary;
+}

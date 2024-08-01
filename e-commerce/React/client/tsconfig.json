@@ -1,0 +1,25 @@
+{
+  "include": ["src"],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ],
+  "compilerOptions": {
+    "noEmit": true,
+    "strict": true,
+    "module": "ESNext",
+    "target": "ES2020",
+    "jsx": "react-jsx",
+    "skipLibCheck": true,
+    "noUnusedLocals": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "noUnusedParameters": true,
+    "moduleResolution": "bundler",
+    "useDefineForClassFields": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowImportingTsExtensions": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"]
+  }
+}

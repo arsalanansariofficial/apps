@@ -1,0 +1,31 @@
+@import '../../scss/fonts';
+@import '../../scss/colors';
+@import '../../scss/buttons';
+
+.ps-posts {
+  color: $clr-primary;
+  font-family: $ff-primary;
+  font-weight: $fw-bold;
+
+  & > li {
+    list-style: none;
+  }
+}
+
+.ps-posts__filter {
+  & > .btn--secondary::placeholder {
+    color: $clr-secondary;
+  }
+
+  & > .btn--secondary,
+  & > .btn--secondary:focus {
+    color: $clr-secondary;
+    background: $bg-secondary;
+    border: none;
+    border-radius: 0.5em;
+  }
+}
+
+.ps-posts {
+  grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+}

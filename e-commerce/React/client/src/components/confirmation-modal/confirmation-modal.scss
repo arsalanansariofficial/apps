@@ -1,0 +1,24 @@
+@import '../../scss/fonts';
+@import '../../scss/colors';
+@import '../../scss/buttons';
+
+.modal {
+  background: $bg-backdrop;
+  color: $clr-primary;
+  font-family: $ff-primary;
+  font-weight: $fw-bold;
+}
+
+#confirmation-modal {
+  font-size: 10vmin;
+
+  .modal-content {
+    background: none;
+  }
+}
+
+.confirmation-modal-body {
+  & > .confirmation-icon {
+    cursor: pointer;
+  }
+}

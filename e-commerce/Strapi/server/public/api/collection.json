@@ -1,0 +1,319 @@
+{
+  "info": {
+    "_postman_id": "2e03c408-3ada-4a07-94b1-2b351e5ca2d5",
+    "name": "project-007",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "36240089"
+  },
+  "item": [
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "Register",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {\r",
+                  "    pm.environment.set('token', pm.response.json().jwt);\r",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"First User\",\r\n    \"email\": \"first.user@example.com\",\r\n    \"password\": \"first.user\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/auth/local/register",
+              "host": ["{{url}}"],
+              "path": ["auth", "local", "register"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {\r",
+                  "    pm.environment.set('token', pm.response.json().jwt);\r",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"identifier\": \"first.user@example.com\",\r\n    \"password\": \"first.user\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/auth/local",
+              "host": ["{{url}}"],
+              "path": ["auth", "local"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Read User",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/users/me?populate[orders][populate][products]=*",
+              "host": ["{{url}}"],
+              "path": ["users", "me"],
+              "query": [
+                {
+                  "key": "populate[orders][populate][products]",
+                  "value": "*"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Product",
+      "item": [
+        {
+          "name": "Read Products",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/products?populate=*",
+              "host": ["{{url}}"],
+              "path": ["products"],
+              "query": [
+                {
+                  "key": "populate",
+                  "value": "*"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Read Product",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/products/1?populate=*",
+              "host": ["{{url}}"],
+              "path": ["products", "1"],
+              "query": [
+                {
+                  "key": "populate",
+                  "value": "*"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Product",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_super_admin}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"data\": {\r\n        \"name\": \"Ball Pen\"\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/products/1",
+              "host": ["{{url}}"],
+              "path": ["products", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Order",
+      "item": [
+        {
+          "name": "Read Order",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/orders/{{order_id}}?populate=*",
+              "host": ["{{url}}"],
+              "path": ["orders", "{{order_id}}"],
+              "query": [
+                {
+                  "key": "populate",
+                  "value": "*"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Order",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {\r",
+                  "    pm.environment.set('order_id', pm.response.json().data.id);\r",
+                  "    pm.environment.set('dv_id', pm.response.json().data.attributes.dvs[0].id);\r",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"data\": {\r\n        \"pricePaidInCents\": \"2.5\",\r\n        \"products\": [\r\n            {\r\n                \"id\": 1\r\n            }\r\n        ],\r\n        \"user\": {\r\n            \"id\": 1\r\n        }\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/orders",
+              "host": ["{{url}}"],
+              "path": ["orders"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Downloads",
+      "item": [
+        {
+          "name": "Read Download",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/download-verifications/{{dv_id}}",
+              "host": ["{{url}}"],
+              "path": ["download-verifications", "{{dv_id}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Sales",
+      "item": [
+        {
+          "name": "Read Download",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/download-verifications/{{dv_id}}",
+              "host": ["{{url}}"],
+              "path": ["download-verifications", "{{dv_id}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ]
+}

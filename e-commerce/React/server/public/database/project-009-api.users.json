@@ -1,0 +1,24 @@
+[
+  {
+    "_id": {
+      "$oid": "6692280c0818905a6c783648"
+    },
+    "username": "first.user@example.com",
+    "password": "$2a$08$Q6KoBb4hTKe9cMzzjq7GieNabgI0SOaEGe0WePYlK6irEOI5iYz4q",
+    "tokens": [
+      {
+        "_id": {
+          "$oid": "6692280c0818905a6c783649"
+        },
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjkyMjgwYzA4MTg5MDVhNmM3ODM2NDgiLCJpYXQiOjE3MjA4NTQ1NDAsImV4cCI6MTcyMDg1ODE0MH0.vrARQ7Iv4D04bxOKd_Eg-s8lPUWoEWSyz3zAN-mVC4s"
+      }
+    ],
+    "createdAt": {
+      "$date": "2024-07-13T07:09:00.881Z"
+    },
+    "updatedAt": {
+      "$date": "2024-07-13T07:09:00.881Z"
+    },
+    "__v": 0
+  }
+]

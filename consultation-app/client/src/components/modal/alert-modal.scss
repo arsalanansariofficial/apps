@@ -1,0 +1,18 @@
+@import '../../scss/fonts';
+@import '../../scss/colors';
+@import '../../scss/buttons';
+
+.modal {
+  color: $clr-primary;
+  background: $bg-backdrop;
+  font-family: $ff-primary;
+  font-weight: $fw-bold;
+}
+
+.alert-modal-content {
+  background: $bg-secondary;
+
+  @media (min-width: 576px) {
+    font-size: $fs-20;
+  }
+}

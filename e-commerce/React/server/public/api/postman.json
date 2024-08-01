@@ -1,0 +1,341 @@
+{
+  "info": {
+    "_postman_id": "15548e40-dba1-4c21-9b03-c964dfd4d6c1",
+    "name": "Task Manager",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "Create User",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {\r",
+                  "    pm.environment.set('authenticationToken', pm.response.json().token);\r",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"First User\",\r\n    \"email\": \"first-user@example.com\",\r\n    \"password\": \"1234567890\",\r\n    \"age\": 25\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/users",
+              "host": ["{{url}}"],
+              "path": ["users"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login User",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {\r",
+                  "    pm.environment.set('authenticationToken', pm.response.json().token);\r",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"first-user@example.com\",\r\n    \"password\": \"1234567890\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/users/login",
+              "host": ["{{url}}"],
+              "path": ["users", "login"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Logout User",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/users/logout",
+              "host": ["{{url}}"],
+              "path": ["users", "logout"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Logout All User Sessions",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/users/logoutAll",
+              "host": ["{{url}}"],
+              "path": ["users", "logoutAll"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Read User",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/users/63de678b1189290c40299927",
+              "host": ["{{url}}"],
+              "path": ["users", "63de678b1189290c40299927"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "View User Profile",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2UxZjQ0YzJiNmViYTE4YzBjZmQ0NDciLCJpYXQiOjE2NzU3NTI1MjR9.pZb4e0V5I1hs-atTFtHiFYT5w-oBawJO2qu1hc2v-U0",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/users/view-profile",
+              "host": ["{{url}}"],
+              "path": ["users", "view-profile"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update User",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Updated User\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/users/update-profile",
+              "host": ["{{url}}"],
+              "path": ["users", "update-profile"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete User",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/users/delete-profile",
+              "host": ["{{url}}"],
+              "path": ["users", "delete-profile"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Change User Profile Picture",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "uploadProfile",
+                  "type": "file",
+                  "src": []
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{url}}/users/upload-profile-picture",
+              "host": ["{{url}}"],
+              "path": ["users", "upload-profile-picture"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete User Profile Picture",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/users/delete-profile-picture",
+              "host": ["{{url}}"],
+              "path": ["users", "delete-profile-picture"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Task",
+      "item": [
+        {
+          "name": "Create Task",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"description\": \"Task One\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/tasks",
+              "host": ["{{url}}"],
+              "path": ["tasks"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Read Tasks",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/tasks",
+              "host": ["{{url}}"],
+              "path": ["tasks"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Read Task",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/tasks/63de68bb18859607fccf2a34",
+              "host": ["{{url}}"],
+              "path": ["tasks", "63de68bb18859607fccf2a34"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Task",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"description\": \"New Task\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/tasks/63e0ac95968413050428e29a",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["tasks", "63e0ac95968413050428e29a"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Task",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/tasks/63e0af729ac0833380afc9ca",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["tasks", "63e0af729ac0833380afc9ca"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{authenticationToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ]
+}
